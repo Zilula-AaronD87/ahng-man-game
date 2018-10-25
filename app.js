@@ -10,7 +10,7 @@ var guessesLeft = document.getElementById('guessLeft');
 
 var totalGuesses = 10;
 
-if( 3 > 2) {
+if()
     for(var i = 0; i < totalGuesses; i) {
         totalGuesses = totalGuesses - 1;
         console.log(totalGuesses);
@@ -18,6 +18,17 @@ if( 3 > 2) {
     }
 }
 
+var randomWord = Math.floor(Math.random() * words.length)
+
+var getWord = words[randomWord];
 
 
+console.log(getWord);
 
+var wordBlanks = '';
+
+
+for(var j = 0; j < getWord.length; j++) {
+        wordBlanks += '-';
+}
+console.log(wordBlanks);
