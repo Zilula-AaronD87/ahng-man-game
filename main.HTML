@@ -19,9 +19,12 @@
     <p id="wordPrompt"></p>
 
     <p id="userMessage"></p>
-<form id="myForm">
-    <input type="text" id="userInput" maxlength="1"> 
-      <input type="button" value="play again" onclick="resetGame()">
+<form id="myForm" onsubmit = "event.preventDefault(); checkGuess();">
+    <input type="text" id="userInput" maxlength="1" value=""> 
+    <div>
+        <button type="submit" name="submit" id="submit">Submit</button>
+        <button type="reset" name="reset" id="reset" onclick="resetGame();">Play again</button>
+    </div>
 </form>
 
 <script src="words.js"></script>
