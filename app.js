@@ -40,11 +40,7 @@ function checkGuess() {
 }
 
 
-
-
-
-
-
+// user message
 if(3>2){ 
     userMessage.textContent = 'You win 3>2';
 }
