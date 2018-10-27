@@ -46,7 +46,7 @@ function checkGuess() {
 
     for(var i = 0; i < getWord.length; i++){
 
-        if(input[i] === userInput) {
+        if(input[i] === userInput.value) {
             wordBlanks[i] = userInput.value;
             guessed.push(userInput);
 	
