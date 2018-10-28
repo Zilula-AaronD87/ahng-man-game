@@ -17,31 +17,31 @@
     <main>
         <div id="column1">
             <div id="guessesLeftText">
-            <p id="guessesLeft"></p>
+                <p id="guessesLeft"></p>
             </div>
 
             <div id="image">
-                    <img src="images/0.jpg" hidden >
-                    <img src="images/1.jpg" hidden >
-                    <img src="images/2.jpg" hidden >
-                    <img src="images/3.jpg" hidden >
-                    <img src="images/4.jpg" hidden >
-                    <img src="images/5.jpg" hidden >
-                    <img src="images/6.jpg" hidden >
-            </div> 
+                <img src="images/0.jpg" hidden>
+                <img src="images/1.jpg" hidden>
+                <img src="images/2.jpg" hidden>
+                <img src="images/3.jpg" hidden>
+                <img src="images/4.jpg" hidden>
+                <img src="images/5.jpg" hidden>
+                <img src="images/6.jpg" hidden>
+            </div>
         </div>
-            <div id="column2">    
+        <div id="column2">
             <p id="wordPrompt"></p>
             <p id="wrongLetters"></p>
 
             <p id="userMessage"></p>
 
             <form id="myForm" autocomplete="off" onsubmit="event.preventDefault();">
-            <input type="text" id="letter" maxlength="1">
-            <div>
-                <button type="button" value="letter" id="button" onclick="checkGuess();">Guess</button>
-            </div>
-        </form>
+                <input type="text" id="letter" maxlength="1">
+                <div>
+                    <button type="button" value="letter" id="button" onclick="checkGuess();">Guess</button>
+                </div>
+            </form>
         </div>
     </main>
 
