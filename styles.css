@@ -1,0 +1,72 @@
+body{
+ background-color: aqua;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+
+}
+
+h1 {
+
+}
+#guessesLeftText {
+    display: flex;
+    justify-content: center;
+}
+
+#image {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+}
+img{
+    width: 95%;
+    height: 90%;
+}
+
+#wordPrompt{
+    display: flex;
+    justify-content: center;
+}
+
+#wrongLetters {
+    display: flex;
+    justify-content: center;
+}
+
+#userMessage {
+    display: flex;
+    justify-content: center;
+}
+
+#myForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#button {
+    margin-top: 10px;
+    border: 2px solid black;
+
+
+}
+
+@media (min-width: 500px) {
+
+#column1 {
+
+
+
+}
+
+#column2{
+
+
+    
+}
+
+}

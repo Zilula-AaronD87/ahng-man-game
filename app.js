@@ -53,7 +53,7 @@ function checkGuess() {
         guesses.innerHTML = 'Number of incorrect guesses: ' + guessesCount;
         wordPrompt.innerHTML = answerArray.join(' ');
     }
-    if(guessesCount > 6) {
+    if(guessesCount > 5) {
         userMessage.innerHTML = 'You lose!';
         button.disabled = true;
     }
