@@ -1,5 +1,7 @@
-Hangman game written in vanilla JS with flexbox
+# Hangman game written in vanilla JS with flexbox
 
-Alchemy Code Labs
+## Alchemy Code Labs
+
 Pair project 1
+
 10-26-18
