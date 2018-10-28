@@ -1,129 +1,91 @@
+/* exported getUnderscores */
+/* exported resetGame */
+/* exported checkGuess */
+'use strict';
 
-// var letterUsed = document.getElementById('letterUsed');
-// var wordPrompt = document.getElementById('wordPrompt');
-// var userMessage = document.getElementById('userMessage');
-// var userInput = document.getElementById('userInput');
-// // var userInput2 = userInput.value;
-// // console.log(userInput2);
-// console.log(userInput);
+var wrong = document.getElementById('wrongLetters');
+var wordPrompt = document.getElementById('wordPrompt');
+var userMessage = document.getElementById('userMessage');
+var guesses = document.getElementById('guessesLeft');
+var letterGuessed = document.getElementById('letter');
+var button = document.getElementById('button');
 
-// var countGuess = document.getElementById('guessesLeft');
- 
-
-// // get random word from words.js
-// var randomWord = Math.floor(Math.random() * words.length)
-// var getWord = words[randomWord];
-// //breaks up word into array of strings per character
-// var letterSlice = [];
-// var input = getWord.split('');
-// letterSlice.push(input);
-
-// //guesses display 
-// var remainingGuess = 12;
-// countGuess.innerHTML = remainingGuess;
-
-// // puts '-' as length of random word
-// var wordBlanks = '';
-// for(var j = 0; j < getWord.length; j++) {
-//     wordBlanks += '-';
-// }
-// wordPrompt.innerHTML = wordBlanks ;
+var stringify;
+var count = 0;
+var answerArray = [];
+var wrongLetter = [' Wrong Letters: '];
+var currentImageIndex = -1;
+var maxImageIndex = 0;
+var images = [];
 
 
-
-
-// var guessed = [];
-// function checkGuess() {
-//     var guess = document.getElementById('userInput').value;
-//     guessed.push(guess);
-//    // console.log(guess);
-//     console.log(guessed);
+// eslint-disable-next-line
+var randomWord = Math.floor(Math.random() * words.length);
+// eslint-disable-next-line
+var getWord = words[randomWord];
     
-// }
-// var stuffCheck = input.indexOf(guessed);
-// console.log(input.indexOf(guessed));
-// wordBlanks[stuffCheck] = input;
-// console.log(wordBlanks)
+// eslint-disable-next-line
+console.log('random word', getWord);
 
+function getUnderscores() {
+    for(var j = 0; j < getWord.length; j++) {
+        answerArray[j] = '_ ';
+    }
+    stringify = answerArray.join(' ');
+    wordPrompt.innerHTML = stringify;
 
+}
 
-
-
-// // user message
-// if(3>2){ 
-//     userMessage.textContent = 'You win 3>2';
-// }
-// else {
-//     userMessage.textContent = 'Loss';
-// }
-
-// function submit() {
-
-// }
-
-// function resetGame() {
-//     userInput.textContent = '';
-//     countGuess = 12;
-//     userMessage.textContent = '';
+function checkGuess() {
+    var letter = letterGuessed.value;
     
-// }
+    if(letter.length > 0) {
+        for(var i = 0; i < getWord.length; i++) {
+            if(getWord[i] === letter) {
+                answerArray[i] = letter;
+                var answer = true;
+                letterGuessed.value = '';
+            }
+        }
+        if(answer !== true) {
+            changeImages();
+            count++;
+            wrongLetter.push(letter);
+            wrong.innerHTML = wrongLetter.join(' ');
+            letterGuessed.value = '';
+            
+            
+        }
+        guesses.innerHTML = 'Number of incorrect guesses: ' + count;
+        wordPrompt.innerHTML = answerArray.join(' ');
+    }
+    if(count > 6) {
+        userMessage.innerHTML = 'You lose!';
+        button.disabled = true;
+    }
+    if(answerArray.join('') === getWord) {
+        userMessage.innerHTML = 'You Win!';
+        button.disabled = true;
+    }
+}
 
+function setUp() {
+    images = document.images;
+    maxImageIndex = images.length;
+    currentImageIndex = 0;
+}
 
+function changeImages() {
+    if(currentImageIndex <= maxImageIndex - 1 || currentImageIndex === 0) {
+        currentImageIndex = currentImageIndex += 1;
+    }
+    
+    for(var p = 0; p < maxImageIndex; p++) {
+        images[p].hidden = (p !== currentImageIndex);
+    }
+}
 
-
-// // var currentWord = document.getElementById('currentWord');
-// // var lettersUsed = document.getElementById('lettersGuessed');
-// // var countGuess = document.getElementById('guessesLeft');
-// // var gameMessage = document.getElementById('userMessage');
-// // var displayMessage = document.getElementById('displayMessage');
-
-
-// // var wordList = ['bananas', 'grapes', 'pie', 'brownies'];
-// // var lettersGuessed = [];
-// // var selectedWord = [];
-
-// // var pick = Math.floor(Math.random() * wordList.length);
-// // var wordChoice = wordList[pick].toLowerCase();
-// // console.log(wordChoice);
-
-// // function pickAWord() {
-// //     countGuess.innerHTML = remainingGuess;
-// //     var position = wordList.indexOf(wordList[pick]);
-// //     wordList.splice(position, 1);
-// //     for(var i = 0; i < wordChoice.length; i++) {
-// //         selectedWord.push('-');
-// //     }
-// //     currentWord.innerHTML = selectedWord;
-// // }
-
-// // function checkUserInput(userInput) {
-// //     for (var j = 0; j < wordChoice.length; j++) {
-// //         if (wordChoice[j] === userInput) {
-// //             selectedWord.splice(j, 1, userInput);
-// //         }
-// //     }
-// //     currentWord.innerHTML = selectedWord;
-// //     if (selectedWord.join('') === wordChoice) {
-// //         gameMessage.innerHTML = 'You win!';
-// //     }
-// // }
-
-
-// // // document.onkeyup = function (event) {
-// // //     gameMessage.innerHTML = '';
-// // //     var userChoice = ((String.fromCharCode(event.keyCode))).toLowerCase();
-// // //     if (lettersGuessed.indexOf(userChoice) === -1) {
-// // //         lettersGuessed.push(userChoice);
-// // //         lettersUsed.innerHTML = lettersGuessed;
-// // //         checkUserInput(userChoice);
-// // //         if (remainingGuess > 0 && selectedWord.join('') !== wordChoice && lettersGuessed.length !== 0) {
-// // //             remainingGuess--;
-// // //         }
-// // //         countGuess.innerHTML = remainingGuess;
-// // //         if (remainingGuess === 0 && selectedWord.join('') !== wordChoice) {
-// // //             gameMessage.innerHTML = 'You Lose!';
-// // //         }
-// // //     } else {
-// // //         displayMessage.innerHTML = 'Duplicate letter, choose another.';
-// // //     }
-// // // }
+window.onload = function() {
+    setUp();
+    images[currentImageIndex].hidden = false;
+};
