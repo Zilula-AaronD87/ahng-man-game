@@ -2,6 +2,6 @@
 
 ## Alchemy Code Labs
 
-Pair project 1
+### Pair project 1
 
 10-26-18
