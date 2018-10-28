@@ -10,33 +10,27 @@ var guesses = document.getElementById('guessesLeft');
 var letterGuessed = document.getElementById('letter');
 var button = document.getElementById('button');
 
-var stringify;
-var count = 0;
+var guessesCount = 0;
 var answerArray = [];
 var wrongLetter = [' Wrong Letters: '];
 var currentImageIndex = -1;
 var maxImageIndex = 0;
 var images = [];
 
-
 // eslint-disable-next-line
 var randomWord = Math.floor(Math.random() * words.length);
 // eslint-disable-next-line
 var getWord = words[randomWord];
-    
-// eslint-disable-next-line
-console.log('random word', getWord);
 
-function getUnderscores() {
-    for(var j = 0; j < getWord.length; j++) {
-        answerArray[j] = '_ ';
-    }
-    stringify = answerArray.join(' ');
-    wordPrompt.innerHTML = stringify;
-
+for(var j = 0; j < getWord.length; j++) {
+    answerArray[j] = '_ ';
 }
+var stringify = answerArray.join(' ');
+wordPrompt.innerHTML = stringify;
+
 
 function checkGuess() {
+
     var letter = letterGuessed.value;
     
     if(letter.length > 0) {
@@ -49,17 +43,17 @@ function checkGuess() {
         }
         if(answer !== true) {
             changeImages();
-            count++;
+            guessesCount++;
             wrongLetter.push(letter);
             wrong.innerHTML = wrongLetter.join(' ');
             letterGuessed.value = '';
             
             
         }
-        guesses.innerHTML = 'Number of incorrect guesses: ' + count;
+        guesses.innerHTML = 'Number of incorrect guesses: ' + guessesCount;
         wordPrompt.innerHTML = answerArray.join(' ');
     }
-    if(count > 6) {
+    if(guessesCount > 6) {
         userMessage.innerHTML = 'You lose!';
         button.disabled = true;
     }
