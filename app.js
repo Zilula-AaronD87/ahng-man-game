@@ -47,8 +47,6 @@ function checkGuess() {
             wrongLetter.push(letter);
             wrong.innerHTML = wrongLetter.join(' ');
             letterGuessed.value = '';
-            
-            
         }
         guesses.innerHTML = 'Number of incorrect guesses: ' + guessesCount;
         wordPrompt.innerHTML = answerArray.join(' ');
