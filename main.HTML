@@ -18,7 +18,9 @@
         <div id="column1">
             <div id="guessesLeftText">
                 <p id="guessesLeft"></p>
+                <p id="totalGuesses"></p>
             </div>
+            
 
             <div id="image">
                 <img src="images/0.jpg" hidden>
@@ -37,7 +39,7 @@
             <p id="userMessage"></p>
 
             <form id="myForm" autocomplete="off" onsubmit="event.preventDefault();">
-                <input type="text" id="letter" maxlength="1">
+                <input type="text" id="letter" maxlength="1" pattern="[A-Za-z]">
                 <div>
                     <button type="button" value="letter" id="button" onclick="checkGuess();">Guess</button>
                 </div>

@@ -9,13 +9,17 @@ var userMessage = document.getElementById('userMessage');
 var guesses = document.getElementById('guessesLeft');
 var letterGuessed = document.getElementById('letter');
 var button = document.getElementById('button');
+var allGuesses = document.getElementById('totalGuesses');
 
 var guessesCount = 0;
+var totalGuesses = 0;
 var answerArray = [];
 var wrongLetter = [' Wrong Letters: '];
 var currentImageIndex = -1;
 var maxImageIndex = 0;
 var images = [];
+
+
 
 // eslint-disable-next-line
 var randomWord = Math.floor(Math.random() * words.length);
@@ -34,6 +38,8 @@ function checkGuess() {
     var letter = letterGuessed.value;
     
     if(letter.length > 0) {
+        totalGuesses++;
+        allGuesses.innerHTML = 'Number of total guesses: ' + totalGuesses;
         for(var i = 0; i < getWord.length; i++) {
             if(getWord[i] === letter) {
                 answerArray[i] = letter;
@@ -41,6 +47,7 @@ function checkGuess() {
                 letterGuessed.value = '';
             }
         }
+
         if(answer !== true) {
             changeImages();
             guessesCount++;
