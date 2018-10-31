@@ -37,7 +37,7 @@ function checkGuess() {
 
     var letter = letterGuessed.value;
     
-    if(letter.length > 0) {
+    if(letter.length > 0 && letter.search(/[^a-zA-Z]+/) === -1) {
         totalGuesses++;
         allGuesses.innerHTML = 'Number of total guesses: ' + totalGuesses;
         for(var i = 0; i < getWord.length; i++) {
